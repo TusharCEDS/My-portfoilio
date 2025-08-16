@@ -6,11 +6,14 @@ import { FiGithub, FiLinkedin, FiFileText, FiHome } from 'react-icons/fi';
 import { SiLeetcode } from 'react-icons/si';
 
 export default function Contact() {
+  const [menuOpen, setMenuOpen] = useState(false);
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-indigo-50">
       {/* Navbar */}
       <nav className="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-slate-200/50 shadow-sm">
         <div className="container mx-auto flex items-center justify-between max-w-7xl px-6 py-4">
+          {/* Logo */}
           <Link href="/" className="group">
             <div className="flex items-center space-x-3 cursor-pointer">
               <div className="relative">
@@ -28,11 +31,12 @@ export default function Contact() {
               </span>
             </div>
           </Link>
-          
-          <ul className="flex items-center gap-1 text-sm font-medium">
+
+          {/* Desktop Menu */}
+          <ul className="hidden md:flex items-center gap-1 text-sm font-medium">
             <li>
-              <Link 
-                href="/" 
+              <Link
+                href="/"
                 className="relative px-5 py-2.5 rounded-full text-slate-700 hover:text-indigo-700 transition-all duration-300 group"
               >
                 <span className="relative z-10">Home</span>
@@ -40,8 +44,8 @@ export default function Contact() {
               </Link>
             </li>
             <li>
-              <Link 
-                href="/projects" 
+              <Link
+                href="/projects"
                 className="relative px-5 py-2.5 rounded-full text-slate-700 hover:text-indigo-700 transition-all duration-300 group"
               >
                 <span className="relative z-10">Projects</span>
@@ -49,8 +53,8 @@ export default function Contact() {
               </Link>
             </li>
             <li>
-              <Link 
-                href="/achievements" 
+              <Link
+                href="/achievements"
                 className="relative px-5 py-2.5 rounded-full text-slate-700 hover:text-indigo-700 transition-all duration-300 group"
               >
                 <span className="relative z-10">Achievements</span>
@@ -58,43 +62,111 @@ export default function Contact() {
               </Link>
             </li>
             <li>
-              <Link 
-                href="/contact" 
+              <Link
+                href="/contact"
                 className="relative px-6 py-2.5 rounded-full bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-medium hover:from-indigo-700 hover:to-purple-700 transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105 transform"
               >
                 Contact
               </Link>
             </li>
           </ul>
+
+          {/* Mobile Menu Button */}
+          <button
+            onClick={() => setMenuOpen(!menuOpen)}
+            className="md:hidden p-2 text-slate-700 hover:text-indigo-700 focus:outline-none"
+          >
+            {menuOpen ? (
+              // Close Icon
+              <svg
+                className="w-6 h-6"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            ) : (
+              // Hamburger Icon
+              <svg
+                className="w-6 h-6"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+              </svg>
+            )}
+          </button>
         </div>
+
+        {/* Mobile Menu */}
+        {menuOpen && (
+          <ul className="md:hidden flex flex-col space-y-1 px-6 pb-4 text-sm font-medium bg-white border-t border-slate-200">
+            <li>
+              <Link
+                href="/"
+                className="block px-4 py-2 rounded-lg hover:bg-slate-100 transition"
+                onClick={() => setMenuOpen(false)}
+              >
+                Home
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="/projects"
+                className="block px-4 py-2 rounded-lg hover:bg-slate-100 transition"
+                onClick={() => setMenuOpen(false)}
+              >
+                Projects
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="/achievements"
+                className="block px-4 py-2 rounded-lg hover:bg-slate-100 transition"
+                onClick={() => setMenuOpen(false)}
+              >
+                Achievements
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="/contact"
+                className="block px-4 py-2 rounded-lg bg-gradient-to-r from-indigo-600 to-purple-600 text-white hover:from-indigo-700 hover:to-purple-700 transition"
+                onClick={() => setMenuOpen(false)}
+              >
+                Contact
+              </Link>
+            </li>
+          </ul>
+        )}
       </nav>
 
       {/* Main Content */}
       <main className="container mx-auto max-w-7xl px-6 py-16 md:py-24">
         {/* Hero Section */}
         <div className="text-center space-y-8 mb-20">
-          
-          
           <h1 className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-indigo-600 via-purple-600 to-indigo-800 bg-clip-text text-transparent">
-            Let's Connect
+            Let&apos;s Connect
           </h1>
-          
           <p className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
-            Have a project in mind or just want to chat about technology? I'd love to hear from you. 
-            Drop me a message and I'll get back to you as soon as possible.
+            Have a project in mind or just want to chat about technology? I&apos;d love to hear from you. 
+            Drop me a message and I&apos;ll get back to you as soon as possible.
           </p>
         </div>
 
-        {/* Social Links + Resume Button */}
+        {/* Social Links + Resume */}
         <div className="space-y-10">
-          {/* Social Links Row */}
           <div className="flex flex-wrap justify-center gap-6">
-            <a href="/" className="group p-4 w-32 h-32 bg-white/60 backdrop-blur-sm border border-slate-200/60 rounded-2xl shadow-sm hover:shadow-lg hover:scale-105 transition-all duration-300 flex flex-col items-center justify-center">
+            <Link href="/" className="group p-4 w-32 h-32 bg-white/60 backdrop-blur-sm border border-slate-200/60 rounded-2xl shadow-sm hover:shadow-lg hover:scale-105 transition-all duration-300 flex flex-col items-center justify-center">
               <div className="w-12 h-12 bg-indigo-100 rounded-xl flex items-center justify-center group-hover:bg-indigo-200 transition-colors duration-300">
                 <FiHome className="w-6 h-6 text-indigo-600" />
               </div>
               <span className="font-semibold text-slate-700 group-hover:text-indigo-700 text-center">Portfolio</span>
-            </a>
+            </Link>
 
             <a href="https://www.linkedin.com/in/tushar-11b51a312/" target="_blank" rel="noopener noreferrer" className="group p-4 w-32 h-32 bg-white/60 backdrop-blur-sm border border-slate-200/60 rounded-2xl shadow-sm hover:shadow-lg hover:scale-105 transition-all duration-300 flex flex-col items-center justify-center">
               <div className="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center group-hover:bg-blue-200 transition-colors duration-300">
@@ -120,7 +192,7 @@ export default function Contact() {
 
           {/* Download Resume Button */}
           <div className="flex justify-center">
-            <a href="https://drive.google.com/file/d/1M5Pk-C8I76o1GRpAkN2wFE0KxB_mMtfK/view?usp=drive_link" download className="group w-auto px-6 py-4 bg-gradient-to-r from-purple-500 to-indigo-600 text-white rounded-2xl shadow-lg hover:shadow-xl hover:from-purple-600 hover:to-indigo-700 transition-all duration-300 flex items-center justify-center gap-3 transform hover:scale-[1.02]">
+            <a href="https://drive.google.com/file/d/1Ao4bRLAc560rVxkMfb9r2_mZcDDMd8lv/view?usp=sharing" download className="group w-auto px-6 py-4 bg-gradient-to-r from-purple-500 to-indigo-600 text-white rounded-2xl shadow-lg hover:shadow-xl hover:from-purple-600 hover:to-indigo-700 transition-all duration-300 flex items-center justify-center gap-3 transform hover:scale-[1.02]">
               <FiFileText className="w-6 h-6" />
               <span className="font-semibold text-lg">Download My Resume</span>
             </a>
