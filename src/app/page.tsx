@@ -74,22 +74,44 @@ export default function Home() {
         {/* Mobile/Tablet Menu Dropdown */}
         {menuOpen && (
           <div className="lg:hidden border-t border-slate-200 bg-white/95 backdrop-blur-md">
-            <ul className="flex flex-col py-4 px-6 space-y-4 text-sm font-medium">
-              <li>
-                <Link href="/projects" onClick={() => setMenuOpen(false)} className="block text-slate-700 hover:text-indigo-700">
-                  Projects
-                </Link>
-              </li>
-              <li>
-                <Link href="/achievements" onClick={() => setMenuOpen(false)} className="block text-slate-700 hover:text-indigo-700">
-                  Achievements
-                </Link>
-              </li>
-              <li>
-                <Link href="/contact" onClick={() => setMenuOpen(false)} className="block text-white bg-gradient-to-r from-indigo-600 to-purple-600 px-4 py-2 rounded-full text-center hover:from-indigo-700 hover:to-purple-700 transition">
-                  Contact
-                </Link>
-              </li>
+            <ul className="md:hidden flex flex-col space-y-1 px-6 pb-4 text-sm font-medium bg-white border-t border-slate-200">
+            <li>
+              <Link
+                href="https://drive.google.com/file/d/1iYuDUcUPAt2yCxI0_Idh-9mBkZj4No7m/view?usp=sharing"
+                className="block px-4 py-2 rounded-lg hover:bg-slate-100 transition"
+              >
+                <span className="relative z-10">Resume</span>
+                <div className="absolute inset-0 bg-slate-100 rounded-full scale-0 group-hover:scale-100 transition-transform duration-300 origin-center"></div>
+              </Link>
+              
+            </li>
+            <li>
+              <Link
+                href="/projects"
+                className="block px-4 py-2 rounded-lg hover:bg-slate-100 transition"
+                onClick={() => setMenuOpen(false)}
+              >
+                Projects
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="/achievements"
+                className="block px-4 py-2 rounded-lg hover:bg-slate-100 transition"
+                onClick={() => setMenuOpen(false)}
+              >
+                Achievements
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="/contact"
+                className="block px-4 py-2 rounded-lg bg-gradient-to-r from-indigo-600 to-purple-600 text-white hover:from-indigo-700 hover:to-purple-700 transition"
+                onClick={() => setMenuOpen(false)}
+              >
+                Contact
+              </Link>
+            </li>
             </ul>
           </div>
         )}
